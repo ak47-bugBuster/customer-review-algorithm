@@ -1,0 +1,33 @@
+### Post a comment
+POST http://localhost:3000/api/videos/1234/comments
+Content-Type: application/json
+
+{
+  "user_id": "u1",
+  "content": "This is a test comment"
+}
+
+### Get all comments
+GET http://localhost:3000/api/videos/1234/comments
+
+### Like a comment
+POST http://localhost:3000/api/comments/c1/like
+
+### Dislike a comment
+POST http://localhost:3000/api/comments/c1/dislike
+
+### Reply to a comment
+POST http://localhost:3000/api/comments/c1/reply
+Content-Type: application/json
+
+{
+  "video_id": "1234",
+  "user_id": "u2",
+  "content": "This is a reply"
+}
+
+### Get replies
+GET http://localhost:3000/api/comments/c1/replies
+
+### Top comments
+GET http://localhost:3000/api/videos/1234/top-comments
