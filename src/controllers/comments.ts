@@ -22,7 +22,7 @@ export async function postComment(req: Request, res: Response) {
       { prepare: true }
     );
     res.status(201).json({ message: 'Comment posted', comment_id: id });
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -34,7 +34,7 @@ export async function getComments(req: Request, res: Response) {
     const result = await client.execute('SELECT * FROM comments WHERE video_id = ?', [videoId], { prepare: true });
     const topLevel = result.rows.filter(c => !c.parent_comment_id);
     res.json(topLevel);
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -51,7 +51,7 @@ export async function replyToComment(req: Request, res: Response) {
       { prepare: true }
     );
     res.status(201).json({ message: 'Reply added', reply_id: replyId });
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -62,7 +62,7 @@ export async function likeComment(req: Request, res: Response) {
   try {
     await client.execute('UPDATE comments SET like_count = like_count + 1 WHERE comment_id = ?', [commentId], { prepare: true });
     res.json({ message: 'Comment liked' });
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -73,7 +73,7 @@ export async function dislikeComment(req: Request, res: Response) {
   try {
     await client.execute('UPDATE comments SET dislike_count = dislike_count + 1 WHERE comment_id = ?', [commentId], { prepare: true });
     res.json({ message: 'Comment disliked' });
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -90,7 +90,7 @@ export async function getTopComments(req: Request, res: Response) {
       return scoreB - scoreA;
     });
     res.json(topLevel);
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
@@ -101,7 +101,7 @@ export async function getReplies(req: Request, res: Response) {
   try {
     const result = await client.execute('SELECT * FROM comments WHERE parent_comment_id = ?', [commentId], { prepare: true });
     res.json(result.rows);
-  } catch (err) {
+  } catch (err:any) {
     res.status(500).json({ error: err.message });
   }
 }
