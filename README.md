@@ -76,6 +76,9 @@ This is a backend project for handling a YouTube-style comment system using **No
 5. Run the app:
    `npm run dev`
 
+6. Incase type error for typescript install below:
+   `npm install --save-dev @types/uuid`
+
 ## Testing API
 Use tools like Postman or VSCode REST Client with the sample requests in test-data/test-requests.http.
 
