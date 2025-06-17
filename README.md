@@ -1,4 +1,4 @@
-# YouTube-Style Comment System (TechMission Solutions Assessment)
+# YouTube-Style Comment System (TechM Assessment)
 
 This is a backend project for handling a YouTube-style comment system using **Node.js**, **TypeScript**, and **ScyllaDB**. It is part of the technical assessment for the **Senior Node Developer** position at TechMission Solutions.
 
